@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<ul>
+    {% for product in products %}
+    <li>
+        Name: <b>{{ product.name }}</b> <br />
+        <i>Category: {{ product.category.name }}</i> <br />
+        {% if product.tags.all %}
+            Tags: (
+            {% for tag in product.tags.all %}
+                {{ tag.name }}
+                {% if not forloop.last %}
+                ,
+                {% endif %}
+            {% endfor %}
+            )
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
